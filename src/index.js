@@ -5,10 +5,11 @@
 import { addFilter } from '@wordpress/hooks';
 import { InspectorControls } from '@wordpress/block-editor';
 import {
-	PanelBody,
 	SelectControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+	__experimentalToolsPanel as ToolsPanel,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 import { store as coreStore } from '@wordpress/core-data';
 import { useSelect } from '@wordpress/data';
@@ -70,43 +71,54 @@ const addInspectorControls = (BlockEdit) => (props) => {
 		'latest-comments-extended',
 	);
 
-	const onPostTypeChange = (newValue) => setAttributes({ postType: newValue });
+	const setPostType = (newValue) => setAttributes({ postType: newValue });
 
 	return (
 		<>
 			<BlockEdit {...props} />
 			<InspectorControls>
-				<PanelBody title={__('Extended Settings', 'latest-comments-extended')}>
-					{postTypesSelectOptions.length > 2 ? (
-						<SelectControl
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							options={postTypesSelectOptions}
-							value={postType}
-							label={postTypeControlLabel}
-							onChange={onPostTypeChange}
-							help={postTypeControlHelp}
-						/>
-					) : (
-						<ToggleGroupControl
-							__nextHasNoMarginBottom
-							__next40pxDefaultSize
-							isBlock
-							value={postType}
-							label={postTypeControlLabel}
-							onChange={onPostTypeChange}
-							help={postTypeControlHelp}
-						>
-							{postTypesSelectOptions.map((option) => (
-								<ToggleGroupControlOption
-									key={option.value}
-									value={option.value}
-									label={option.label}
-								/>
-							))}
-						</ToggleGroupControl>
-					)}
-				</PanelBody>
+				<ToolsPanel
+					label={__('Filters')}
+					resetAll={() => {
+						setPostType('');
+					}}
+				>
+					<ToolsPanelItem
+						hasValue={() => !!postType}
+						label={postTypeControlLabel}
+						onDeselect={() => setPostType('')}
+					>
+						{postTypesSelectOptions.length > 2 ? (
+							<SelectControl
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								options={postTypesSelectOptions}
+								value={postType}
+								label={postTypeControlLabel}
+								onChange={setPostType}
+								help={postTypeControlHelp}
+							/>
+						) : (
+							<ToggleGroupControl
+								__nextHasNoMarginBottom
+								__next40pxDefaultSize
+								isBlock
+								value={postType}
+								label={postTypeControlLabel}
+								onChange={setPostType}
+								help={postTypeControlHelp}
+							>
+								{postTypesSelectOptions.map((option) => (
+									<ToggleGroupControlOption
+										key={option.value}
+										value={option.value}
+										label={option.label}
+									/>
+								))}
+							</ToggleGroupControl>
+						)}
+					</ToolsPanelItem>
+				</ToolsPanel>
 			</InspectorControls>
 		</>
 	);

@@ -17,6 +17,8 @@
 
 namespace S3S\WP\LatestCommentsExtended;
 
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -28,5 +30,13 @@ define( 'S3S_LATEST_COMMENTS_EXTENDED_URL', plugin_dir_url( __FILE__ ) );
 if ( file_exists( S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php' ) ) {
 	require_once S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php';
 }
+
+$updater = PucFactory::buildUpdateChecker(
+	'https://github.com/s3rgiosan/latest-comments-extended/',
+	__FILE__,
+	'latest-comments-extended'
+);
+
+$updater->setBranch( 'main' );
 
 ( Plugin::get_instance() )->setup();

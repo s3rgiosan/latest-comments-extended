@@ -31,12 +31,10 @@ if ( file_exists( S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php' ) ) 
 	require_once S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php';
 }
 
-$updater = PucFactory::buildUpdateChecker(
+PucFactory::buildUpdateChecker(
 	'https://github.com/s3rgiosan/latest-comments-extended/',
 	__FILE__,
 	'latest-comments-extended'
-);
-
-$updater->setBranch( 'main' );
+)->setBranch( 'main' );
 
 ( Plugin::get_instance() )->setup();

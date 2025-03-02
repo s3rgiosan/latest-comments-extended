@@ -5,7 +5,7 @@
  * Plugin URI:        https://github.com/s3rgiosan/latest-comments-extended
  * Requires at least: 6.4
  * Requires PHP:      7.4
- * Version:           1.2.2
+ * Version:           1.3.0
  * Author:            Sérgio Santos
  * Author URI:        https://s3rgiosan.dev/?utm_source=wp-plugins&utm_medium=latest-comments-extended&utm_campaign=author-uri
  * License:           GPL-3.0-or-later

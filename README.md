@@ -11,7 +11,7 @@ Enhances the Latest Comments block with additional features for greater customiz
 ## Requirements
 
 * PHP 7.4+
-* WordPress 6.4
+* WordPress 6.5
 
 ## Installation
 

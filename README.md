@@ -8,11 +8,6 @@ Enhances the Latest Comments block with additional features for greater customiz
 
 ![Latest Comments Extended](assets/screenshot-1.gif)
 
-## Requirements
-
-* PHP 7.4+
-* WordPress 6.5
-
 ## Installation
 
 ### Manual Installation:

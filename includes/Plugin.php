@@ -147,7 +147,10 @@ class Plugin {
 	 */
 	public function render_callback( $attributes = [] ) {
 
-		$this->post_type = $attributes['postType'] ?? '';
+		$all_post_types = get_post_types( [ 'public' => true ] );
+		$all_post_types = array_diff( $all_post_types, [ 'attachment' ] );
+
+		$this->post_type = ! empty( $attributes['postType'] ) ? $attributes['postType'] : $all_post_types;
 
 		add_filter( 'widget_comments_args', [ $this, 'filter_comments_args' ] );
 

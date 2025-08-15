@@ -2,22 +2,27 @@
 
 All notable changes to this project will be documented in this file, per [the Keep a Changelog standard](http://keepachangelog.com/).
 
-## [Unreleased]
+## [1.4.0] - 2025-08-15
+
+### Fixed
+
+- Fix "All" post types comments query.
 
 ### Changed
 
-- Update URI tag
-- Requires at least tag
+- Update dependencies.
+- Update URI tag.
+- Update "Requires at least" tag.
 
 ## [1.3.0] - 2025-03-02
 
 ### Changed
 
-- Added GitHub sponsoring
+- Add GitHub sponsoring.
 
 ### Removed
 
-- WordPress.org installation steps.
+- Remove WordPress.org installation steps.
 
 ## [1.2.2] - 2024-12-07
 
@@ -29,7 +34,7 @@ All notable changes to this project will be documented in this file, per [the Ke
 
 ### Changed
 
-- License.
+- Update license.
 
 ## [1.2.0] - 2024-11-30
 

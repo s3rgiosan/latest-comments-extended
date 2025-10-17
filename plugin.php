@@ -13,8 +13,6 @@
  * Update URI:        https://s3rgiosan.dev/
  * GitHub Plugin URI: https://github.com/s3rgiosan/latest-comments-extended
  * Text Domain:       latest-comments-extended
- *
- * @package           LatestCommentsExtended
  */
 
 namespace S3S\WP\LatestCommentsExtended;

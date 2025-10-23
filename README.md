@@ -10,14 +10,14 @@ Enhances the Latest Comments block with additional features for greater customiz
 
 ## Installation
 
-### Manual Installation:
+### Manual Installation
 
 1. Download the plugin ZIP file from the GitHub repository.
 2. Go to Plugins > Add New > Upload Plugin in your WordPress admin area.
 3. Upload the ZIP file and click Install Now.
 4. Activate the plugin.
 
-### Install with Composer:
+### Install with Composer
 
 To include this plugin as a dependency in your Composer-managed WordPress project:
 

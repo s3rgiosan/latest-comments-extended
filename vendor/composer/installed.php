@@ -3,7 +3,7 @@
         'name' => 's3rgiosan/latest-comments-extended',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8b57b55bf8be6dc8fe23b4fd856dd6b26cbe20d7',
+        'reference' => '4814c35b3f2ec7f300293813c77e002030ffadfd',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         's3rgiosan/latest-comments-extended' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8b57b55bf8be6dc8fe23b4fd856dd6b26cbe20d7',
+            'reference' => '4814c35b3f2ec7f300293813c77e002030ffadfd',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

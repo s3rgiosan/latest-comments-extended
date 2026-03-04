@@ -5,15 +5,6 @@ namespace S3S\WP\LatestCommentsExtended;
 class Plugin {
 
 	/**
-	 * The post type to query comments for.
-	 *
-	 * If empty, the block will query comments for all post types.
-	 *
-	 * @var string
-	 */
-	public $post_type = '';
-
-	/**
 	 * Plugin singleton instance.
 	 *
 	 * @var Plugin $instance Plugin Singleton instance
@@ -150,29 +141,19 @@ class Plugin {
 		$all_post_types = get_post_types( [ 'public' => true ] );
 		$all_post_types = array_diff( $all_post_types, [ 'attachment' ] );
 
-		$this->post_type = ! empty( $attributes['postType'] ) ? $attributes['postType'] : $all_post_types;
+		$post_type = ! empty( $attributes['postType'] ) ? $attributes['postType'] : $all_post_types;
 
-		add_filter( 'widget_comments_args', [ $this, 'filter_comments_args' ] );
+		$filter = function ( $comment_args ) use ( $post_type ) {
+			$comment_args['post_type'] = $post_type;
+			return $comment_args;
+		};
+
+		add_filter( 'widget_comments_args', $filter );
 
 		$markup = render_block_core_latest_comments( $attributes );
 
-		remove_filter( 'widget_comments_args', [ $this, 'filter_comments_args' ] );
+		remove_filter( 'widget_comments_args', $filter );
 
 		return $markup;
-	}
-
-	/**
-	 * Modify the arguments for the comments query based on the block's custom attributes.
-	 *
-	 * @param  array $attributes The original arguments for the comments query.
-	 * @return array
-	 */
-	public function filter_comments_args( $attributes ) {
-
-		if ( ! empty( $this->post_type ) ) {
-			$attributes['post_type'] = $this->post_type;
-		}
-
-		return $attributes;
 	}
 }

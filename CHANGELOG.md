@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file, per [the Keep a Changelog standard](http://keepachangelog.com/).
 
+## [1.6.0] - 2026-03-04
+
+### Changed
+
+- Refactor render callback to use a closure instead of instance property for post type filtering.
+- Improve README with features, requirements, and usage sections.
+
 ## [1.5.0] - 2025-10-26
 
 ### Changed

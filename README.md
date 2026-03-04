@@ -4,9 +4,28 @@
 
 ## Description
 
-Enhances the Latest Comments block with additional features for greater customization and functionality.
+Enhances the WordPress core Latest Comments block by adding a post type filter. By default, the Latest Comments block displays comments from all post types — this plugin lets you narrow it down to a specific one.
 
 ![Latest Comments Extended](assets/screenshot-1.gif)
+
+## Requirements
+
+- WordPress 6.7 or later
+- PHP 7.4 or later
+
+## Features
+
+- Filter comments by post type using a new control in the block inspector sidebar
+- Automatically detects all public post types registered on your site
+- Adapts the UI based on the number of available post types (dropdown for many, toggle buttons for few)
+- Reset the filter to show comments from all post types
+
+## Usage
+
+1. Add or select a **Latest Comments** block in the editor.
+2. Open the block settings sidebar.
+3. Under **Filters**, choose a post type to display comments from.
+4. To show comments from all post types again, choose "All" or click **Reset All**.
 
 ## Installation
 

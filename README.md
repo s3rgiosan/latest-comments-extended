@@ -31,7 +31,7 @@ Enhances the WordPress core Latest Comments block by adding a post type filter. 
 
 ### Manual Installation
 
-1. Download the plugin ZIP file from the GitHub repository.
+1. Download the latest release ZIP from the [Releases page](https://github.com/s3rgiosan/latest-comments-extended/releases/latest).
 2. Go to Plugins > Add New > Upload Plugin in your WordPress admin area.
 3. Upload the ZIP file and click Install Now.
 4. Activate the plugin.

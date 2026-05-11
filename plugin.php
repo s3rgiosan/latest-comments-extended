@@ -27,9 +27,11 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'S3S_LATEST_COMMENTS_EXTENDED_PATH', plugin_dir_path( __FILE__ ) );
 define( 'S3S_LATEST_COMMENTS_EXTENDED_URL', plugin_dir_url( __FILE__ ) );
 
-if ( file_exists( S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php' ) ) {
-	require_once S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php';
+if ( ! file_exists( S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php' ) ) {
+	return;
 }
+
+require_once S3S_LATEST_COMMENTS_EXTENDED_PATH . 'vendor/autoload.php';
 
 PucFactory::buildUpdateChecker(
 	'https://github.com/s3rgiosan/latest-comments-extended/',

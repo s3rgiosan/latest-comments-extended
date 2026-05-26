@@ -2,6 +2,8 @@
 
 > Extends the Latest Comments block with additional features.
 
+[![Try in WordPress Playground](https://img.shields.io/badge/Try%20in-WordPress%20Playground-3858E9?logo=wordpress&logoColor=white)](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/s3rgiosan/latest-comments-extended/main/.wp-playground/blueprint.json)
+
 ## Description
 
 Enhances the WordPress core Latest Comments block by adding a post type filter. By default, the Latest Comments block displays comments from all post types — this plugin lets you narrow it down to a specific one.

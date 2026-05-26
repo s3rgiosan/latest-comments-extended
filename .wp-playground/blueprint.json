@@ -1,0 +1,28 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/wp-admin/post-new.php",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "login": true,
+  "steps": [
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-product-cpt.php",
+      "data": "<?php add_action('init', function(){ register_post_type('product', ['public' => true, 'label' => 'Products', 'supports' => ['title','editor','comments'], 'show_in_rest' => true]); });"
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "git:directory",
+        "url": "https://github.com/s3rgiosan/latest-comments-extended",
+        "ref": "main",
+        "refType": "branch",
+        "path": "/"
+      },
+      "options": { "activate": true }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; register_post_type('product', ['public'=>true,'supports'=>['title','editor','comments']]); $pid = wp_insert_post(['post_title'=>'Sample Product','post_status'=>'publish','post_type'=>'product','comment_status'=>'open']); wp_insert_comment(['comment_post_ID'=>$pid,'comment_author'=>'Jane','comment_author_email'=>'jane@example.com','comment_content'=>'Great product!','comment_approved'=>1,'user_id'=>1]); wp_insert_comment(['comment_post_ID'=>$pid,'comment_author'=>'Bob','comment_author_email'=>'bob@example.com','comment_content'=>'Loved it.','comment_approved'=>1,'user_id'=>1]);"
+    }
+  ]
+}

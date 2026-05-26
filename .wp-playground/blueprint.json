@@ -1,13 +1,13 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
-  "landingPage": "/wp-admin/post-new.php",
+  "landingPage": "/?playground_demo=1",
   "preferredVersions": { "php": "8.3", "wp": "latest" },
   "login": true,
   "steps": [
     {
       "step": "writeFile",
-      "path": "/wordpress/wp-content/mu-plugins/demo-product-cpt.php",
-      "data": "<?php add_action('init', function(){ register_post_type('product', ['public' => true, 'label' => 'Products', 'supports' => ['title','editor','comments'], 'show_in_rest' => true]); });"
+      "path": "/wordpress/wp-content/mu-plugins/playground-demo.php",
+      "data": "<?php\nadd_action('init', function () {\n    register_post_type('product', [\n        'public' => true,\n        'label' => 'Products',\n        'supports' => ['title', 'editor', 'comments'],\n        'show_in_rest' => true,\n    ]);\n});\nadd_action('template_redirect', function () {\n    if (empty($_GET['playground_demo'])) {\n        return;\n    }\n    $post = get_page_by_path('playground-demo', OBJECT, 'post');\n    if ($post) {\n        wp_safe_redirect(admin_url(\"post.php?post={$post->ID}&action=edit\"));\n        exit;\n    }\n    wp_safe_redirect(admin_url('post-new.php'));\n    exit;\n});\n"
     },
     {
       "step": "installPlugin",
@@ -22,7 +22,7 @@
     },
     {
       "step": "runPHP",
-      "code": "<?php require '/wordpress/wp-load.php'; register_post_type('product', ['public'=>true,'supports'=>['title','editor','comments']]); $pid = wp_insert_post(['post_title'=>'Sample Product','post_status'=>'publish','post_type'=>'product','comment_status'=>'open']); wp_insert_comment(['comment_post_ID'=>$pid,'comment_author'=>'Jane','comment_author_email'=>'jane@example.com','comment_content'=>'Great product!','comment_approved'=>1,'user_id'=>1]); wp_insert_comment(['comment_post_ID'=>$pid,'comment_author'=>'Bob','comment_author_email'=>'bob@example.com','comment_content'=>'Loved it.','comment_approved'=>1,'user_id'=>1]);"
+      "code": "<?php require '/wordpress/wp-load.php'; register_post_type('product', ['public'=>true,'supports'=>['title','editor','comments']]); $product_id = wp_insert_post(['post_title'=>'Sample Product','post_status'=>'publish','post_type'=>'product','comment_status'=>'open']); wp_insert_comment(['comment_post_ID'=>$product_id,'comment_author'=>'Jane','comment_author_email'=>'jane@example.com','comment_content'=>'Great product!','comment_approved'=>1,'user_id'=>1]); wp_insert_comment(['comment_post_ID'=>$product_id,'comment_author'=>'Bob','comment_author_email'=>'bob@example.com','comment_content'=>'Loved it.','comment_approved'=>1,'user_id'=>1]); wp_insert_post(['post_title'=>'Latest Comments Extended Demo','post_name'=>'playground-demo','post_status'=>'draft','post_type'=>'post','post_content'=>'<!-- wp:paragraph --><p>Open the block settings sidebar and use the new <strong>Post type</strong> filter to switch between posts and products.</p><!-- /wp:paragraph -->'.\"\\n\\n\".'<!-- wp:latest-comments {\"postType\":\"product\"} /-->']);"
     }
   ]
 }
